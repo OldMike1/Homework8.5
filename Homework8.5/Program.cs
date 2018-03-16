@@ -21,12 +21,35 @@ namespace Homework8._2
 
     class Program
     {
+        
+
+        static void Sort(List<Car> mass)
+        {
+            Car p = new Car();
+            for (int i = 0; i < mass.Count; i++)
+            {
+                for (int j = 0; j < mass.Count; j++)
+                {
+                    if (mass[i].Price < mass[j].Price)
+                    {
+                        p = mass[i];
+                        mass[i] = mass[j];
+                        mass[j] = p;
+                    }
+                }
+            }
+        }
+
+        
+
         static void Main(string[] args)
         {
+            Console.WriteLine("How many cars?");
+            int n = int.Parse(Console.ReadLine());
             List<Car> cars = new List<Car>();
-            for (int i = 1; i <= 4; i++)
+            for (int i = 0; i < n; i++)
             {
-                Console.WriteLine("Car №" + i);
+                Console.WriteLine("Car №" + (i + 1));
 
                 Console.Write("Enter Marka ");
                 string MarkaCar = Console.ReadLine();
@@ -44,12 +67,16 @@ namespace Homework8._2
                 car.Amount = AmountCar;
 
                 cars.Add(car);
+
+
+
             }
+            Sort(cars);
 
-
-            for (int j = 0; j < cars.Count; j++)
+            for (int i = 0; i < cars.Count; i++)
             {
-                Console.WriteLine(cars[j].GetString());
+
+                Console.WriteLine(cars[i].GetString());
             }
 
 
